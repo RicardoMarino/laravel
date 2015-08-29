@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/pensando/laravel/app/Repositories/ProjectRepositoryEloquent.php</file>
+            <file>file:/C:/xampp/htdocs/pensando/laravel/app/Http/Controllers/ProjectController.php</file>
+            <file>file:/C:/xampp/htdocs/pensando/laravel/app/Repositories/Contract/ProjectRepository.php</file>
+            <file>file:/C:/xampp/htdocs/pensando/laravel/app/Http/routes.php</file>
+            <file>file:/C:/xampp/htdocs/pensando/laravel/app/Http/Kernel.php</file>
+            <file>file:/C:/xampp/htdocs/pensando/laravel/composer.json</file>
+            <file>file:/C:/xampp/htdocs/pensando/laravel/config/app.php</file>
+        </group>
+    </open-files>
+</project-private>
