@@ -19,7 +19,7 @@ class ClientValidator extends LaravelValidator {
 
     protected $rules = [
         'name' => 'required|max:150',
-        'resposible' => 'required',
+        'responsible' => 'required',
         'email' => 'required|email'
     ];
 

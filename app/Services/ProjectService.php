@@ -13,6 +13,8 @@ namespace PS\Services;
  *
  * @author Falgor
  */
+use PS\Entities\ProjectMember;
+use PS\Repositories\Contract\ProjectMemberRepository;
 use PS\Repositories\Contract\ProjectRepository;
 use PS\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
@@ -21,10 +23,20 @@ class ProjectService {
 
     protected $repository;
     protected $validator;
+    /**
+     * @var ProjectMemberRepository
+     */
+    private $memberRepository;
 
-    public function __construct(ProjectRepository $repository, ProjectValidator $validator) {
+    /**
+     * @param ProjectRepository $repository
+     * @param ProjectMemberRepository $memberRepository
+     * @param ProjectValidator $validator
+     */
+    public function __construct(ProjectRepository $repository, ProjectMemberRepository $memberRepository,ProjectValidator $validator) {
         $this->repository = $repository;
         $this->validator = $validator;
+        $this->memberRepository = $memberRepository;
     }
 
     public function create(array $data) {
@@ -34,8 +46,8 @@ class ProjectService {
             return $this->repository->create($data);
         } catch (ValidatorException $ex) {
             return [
-                'error' => false,
-                'mensage' => $ex->getMessageBag()
+                'error' => true,
+                'message' => $ex->getMessageBag()
             ];
         }
     }
@@ -47,9 +59,23 @@ class ProjectService {
         } catch (ValidatorException $ex) {
             return [
                 'error' => true,
-                'mensage' => $ex->getMessageBag()
+                'message' => $ex->getMessageBag()
             ];
         }
     }
 
+    public  function addMember(array $data){
+        return $this->memberRepository->create($data);
+    }
+
+    public  function removeMember($project_id,$member_id){
+        return $this->memberRepository->findWhere(['project_id' => $project_id, 'member_id' => $member_id])->delete();
+    }
+
+    public  function isMember($project_id,$member_id){
+         if(count($this->memberRepository->findWhere(['project_id' => $project_id, 'member_id' => $member_id])) > 0){
+            return true;
+         }
+        return false;
+    }
 }

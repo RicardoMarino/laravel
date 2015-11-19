@@ -36,7 +36,7 @@ class ProjectNoteService {
             dd($ex->getMessageBag());
             return response()->json([
                     'error' => true,
-                    'mensage' => $ex->getMessageBag()
+                    'message' => $ex->getMessageBag()
                     ], 412);
         }
     }
@@ -48,7 +48,7 @@ class ProjectNoteService {
         } catch (ValidatorException $ex) {
             return [
                 'error' => true,
-                'mensage' => $ex->getMessageBag()
+                'message' => $ex->getMessageBag()
             ];
         }
     }

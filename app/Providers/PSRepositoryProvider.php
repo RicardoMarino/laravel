@@ -30,6 +30,18 @@ class PSRepositoryProvider extends ServiceProvider {
         $this->app->bind(
             \PS\Repositories\Contract\ProjectNoteRepository::class, \PS\Repositories\ProjectNoteRepositoryEloquent::class
         );
+        /*
+        * Task
+        */
+        $this->app->bind(
+            \PS\Repositories\Contract\ProjectTaskRepository::class, \PS\Repositories\ProjectTaskRepositoryEloquent::class
+        );
+        /*
+         * Members
+         */
+        $this->app->bind(
+            \PS\Repositories\Contract\ProjectMemberRepository::class, \PS\Repositories\ProjectMemberRepositoryEloquent::class
+        );
     }
 
 }

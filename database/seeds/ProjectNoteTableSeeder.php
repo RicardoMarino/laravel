@@ -10,7 +10,7 @@ class ProjectNoteTableSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        factory(\PS\Entities\ProjectNote::class, 50)->create();
+        factory(\PS\Entities\ProjectNote::class, 500)->create();
     }
 
 }

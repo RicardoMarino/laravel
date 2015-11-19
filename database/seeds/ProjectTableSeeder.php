@@ -10,7 +10,7 @@ class ProjectTableSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        factory(\PS\Entities\Project::class, 10)->create();
+        factory(\PS\Entities\Project::class, 100)->create();
     }
 
 }

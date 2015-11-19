@@ -35,7 +35,7 @@ class ClientService {
         } catch (ValidatorException $ex) {
             return response()->json([
                     'error' => true,
-                    'mensage' => $ex->getMessageBag()
+                    'message' => $ex->getMessageBag()
                     ], 412);
         }
     }
@@ -47,7 +47,7 @@ class ClientService {
         } catch (ValidatorException $ex) {
             return [
                 'error' => true,
-                'mensage' => $ex->getMessageBag()
+                'message' => $ex->getMessageBag()
             ];
         }
     }

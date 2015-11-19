@@ -11,7 +11,7 @@ namespace PS\OAuth;
  *
  * @author Falgor
  */
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class Verifier {
 

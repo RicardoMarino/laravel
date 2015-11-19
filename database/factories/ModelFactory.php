@@ -15,7 +15,7 @@ $factory->define(PS\Entities\User::class, function ($faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => str_random(10),
+        'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
     ];
 });
@@ -31,8 +31,8 @@ $factory->define(PS\Entities\Client::class, function ($faker) {
 });
 $factory->define(PS\Entities\Project::class, function ($faker) {
     return [
-        'owner_id' => rand(1, 5),
-        'client_id' => rand(1, 5),
+        'owner_id' => rand(1, 10),
+        'client_id' => rand(1, 10),
         'name' => $faker->word,
         'description' => $faker->sentence,
         'progress' => rand(1, 100),
@@ -45,5 +45,19 @@ $factory->define(PS\Entities\ProjectNote::class, function ($faker) {
         'project_id' => rand(1, 10),
         'title' => $faker->word,
         'note' => $faker->paragraph,
+    ];
+});
+$factory->define(PS\Entities\ProjectTask::class, function ($faker) {
+    return [
+        'project_id' => rand(1, 10),
+        'name' => $faker->word,
+        'status' => rand(1, 3),
+        'due_date' => $faker->dateTime('now'),
+    ];
+});
+$factory->define(PS\Entities\ProjectMember::class, function ($faker) {
+    return [
+        'project_id' => rand(1, 10),
+        'member_id' =>rand(1, 10),
     ];
 });
