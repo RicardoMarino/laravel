@@ -4,15 +4,14 @@ namespace PS\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use PS\Presenters\ProjectMemberPresenter;
-use PS\Repositories\Contract\ProjectMemberRepository;
-use PS\Entities\ProjectMember;
+use PS\Repositories\OAuthClientRepository;
+use PS\Entities\OAuthClient;
 
 /**
- * Class ProjectMemberRepositoryEloquent
+ * Class OAuthClientRepositoryEloquent
  * @package namespace PS\Repositories;
  */
-class ProjectMemberRepositoryEloquent extends BaseRepository implements ProjectMemberRepository
+class OAuthClientRepositoryEloquent extends BaseRepository implements OAuthClientRepository
 {
     /**
      * Specify Model class name
@@ -21,7 +20,7 @@ class ProjectMemberRepositoryEloquent extends BaseRepository implements ProjectM
      */
     public function model()
     {
-        return ProjectMember::class;
+        return OAuthClient::class;
     }
 
     /**
@@ -30,13 +29,5 @@ class ProjectMemberRepositoryEloquent extends BaseRepository implements ProjectM
     public function boot()
     {
         $this->pushCriteria( app(RequestCriteria::class) );
-    }
-
-    /**
-     * @return mixed
-     */
-    public function  presenter(){
-
-        return ProjectMemberPresenter::class;
     }
 }

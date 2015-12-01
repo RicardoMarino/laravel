@@ -61,3 +61,10 @@ $factory->define(PS\Entities\ProjectMember::class, function ($faker) {
         'member_id' =>rand(1, 10),
     ];
 });
+$factory->define(PS\Entities\OAuthClient::class, function ($faker) {
+    return [
+        'id' => rand(1, 1000),
+        'secret' => $faker->word,
+        'name' => $faker->word,
+    ];
+});

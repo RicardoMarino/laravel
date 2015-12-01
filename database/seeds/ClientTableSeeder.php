@@ -10,7 +10,7 @@ class ClientTableSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        factory(\PS\Entities\Client::class, 10000)->create();
+        factory(\PS\Entities\Client::class, 100)->create();
     }
 
 }

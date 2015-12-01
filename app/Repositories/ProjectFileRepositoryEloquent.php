@@ -4,15 +4,15 @@ namespace PS\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use PS\Presenters\ProjectMemberPresenter;
-use PS\Repositories\Contract\ProjectMemberRepository;
-use PS\Entities\ProjectMember;
+use PS\Presenters\ProjectFilePresenter;
+use PS\Repositories\Contract\ProjectFileRepository;
+use PS\Entities\ProjectFile;
 
 /**
- * Class ProjectMemberRepositoryEloquent
+ * Class ProjectFileRepositoryEloquent
  * @package namespace PS\Repositories;
  */
-class ProjectMemberRepositoryEloquent extends BaseRepository implements ProjectMemberRepository
+class ProjectFileRepositoryEloquent extends BaseRepository implements ProjectFileRepository
 {
     /**
      * Specify Model class name
@@ -21,7 +21,7 @@ class ProjectMemberRepositoryEloquent extends BaseRepository implements ProjectM
      */
     public function model()
     {
-        return ProjectMember::class;
+        return ProjectFile::class;
     }
 
     /**
@@ -32,11 +32,8 @@ class ProjectMemberRepositoryEloquent extends BaseRepository implements ProjectM
         $this->pushCriteria( app(RequestCriteria::class) );
     }
 
-    /**
-     * @return mixed
-     */
     public function  presenter(){
 
-        return ProjectMemberPresenter::class;
+        return ProjectFilePresenter::class;
     }
 }

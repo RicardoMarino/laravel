@@ -27,7 +27,7 @@ class ProjectNoteController extends Controller {
         return [
             'error' => false,
             'data' => $projectNote,
-            'mensagem' => 'Foram encontradas ' . count($projectNote) . ' notas vinculadas ao projeto!'
+            'message' => 'Foram encontradas ' . count($projectNote) . ' notas vinculadas ao projeto!'
         ];
     }
 

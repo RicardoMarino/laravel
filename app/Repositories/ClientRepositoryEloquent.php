@@ -15,6 +15,7 @@ namespace PS\Repositories;
  */
 use Prettus\Repository\Eloquent\BaseRepository;
 use PS\Entities\Client;
+use PS\Presenters\ClientPresenter;
 use PS\Repositories\Contract\ClientRepository;
 
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository{
@@ -23,4 +24,11 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
         return Client::class;
     }
 
+    /**
+     * @return mixed
+     */
+    public function  presenter(){
+
+        return ClientPresenter::class;
+    }
 }

@@ -6,7 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use PS\Entities\Project;
 use PS\Repositories\Contract\ProjectRepository;
-
+use PS\Presenters\ProjectPresenter;
 /**
  * Class ProjectRepositoryEloquent
  * @package namespace PS\Repositories;
@@ -44,5 +44,9 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
             }
         }
         return false;
+    }
+
+    public function presenter(){
+        return ProjectPresenter::class;
     }
 }

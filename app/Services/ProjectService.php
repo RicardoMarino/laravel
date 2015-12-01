@@ -13,11 +13,15 @@ namespace PS\Services;
  *
  * @author Falgor
  */
-use PS\Entities\ProjectMember;
+
+use PS\Repositories\Contract\ProjectFileRepository;
 use PS\Repositories\Contract\ProjectMemberRepository;
 use PS\Repositories\Contract\ProjectRepository;
 use PS\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
+
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Contracts\Filesystem\Factory as Storage;
 
 class ProjectService {
 
@@ -29,14 +33,24 @@ class ProjectService {
     private $memberRepository;
 
     /**
+     * @param ProjectFileRepository $repositoryFile
      * @param ProjectRepository $repository
-     * @param ProjectMemberRepository $memberRepository
+     * @param ProjectFileValidator $validatorFile
      * @param ProjectValidator $validator
+     * @param Filesystem $file
+     * @param Storage $storage
+     * @internal param ProjectMemberRepository $memberRepository
      */
-    public function __construct(ProjectRepository $repository, ProjectMemberRepository $memberRepository,ProjectValidator $validator) {
+    public function __construct(ProjectFileRepository $repositoryFile, ProjectRepository $repository,ProjectFileValidator $validatorFile,ProjectValidator $validator, Filesystem $file, Storage $storage)
+    {
+
         $this->repository = $repository;
+        $this->repositoryFile = $repositoryFile;
         $this->validator = $validator;
-        $this->memberRepository = $memberRepository;
+        $this->validatorFile = $validator;
+        $this->file = $file;
+        $this->storage = $storage;
+        $this->validatorFile = $validatorFile;
     }
 
     public function create(array $data) {
@@ -77,5 +91,64 @@ class ProjectService {
             return true;
          }
         return false;
+    }
+
+    public function createFile(array $data){
+
+        try{
+
+            $this->validatorFile->with($data)->passesOrFail();
+
+            $file = $data['file'];
+            $data['extension'] = $file->getClientOriginalExtension();
+
+            $project = $this->repository->skipPresenter()->find($data['project_id']);
+
+            $projectFile = $project->files()->create($data);
+
+            $this->storage->put($projectFile->id.".".$data['extension'], $this->file->get($data['file']));
+
+            return  [
+                'success' => true,
+                'message' => 'Image saved'
+            ];
+
+        }catch (ValidatorException $e){
+            return [
+                'error' => true,
+                'message' => $e->getMessageBag()
+            ];
+        }
+    }
+
+    public function destroyImage($id)
+    {
+        try {
+
+            $image = $this->repositoryFile->skipPresenter()->find($id);
+            if (count($image)) {
+
+                if ($this->storage->exists($image->id . '.' . $image->extension)) {
+                    $this->storage->delete($image->id . '.' . $image->extension);
+                } else {
+                    return [
+                        'error' => true,
+                        'message' => 'file does not exist'
+                    ];
+                }
+                $image->delete();
+                return [
+                    'success' => true,
+                    'message' => 'image deleted'
+                ];
+            }
+        }catch(ModelNotFoundException $e)
+        {
+            return [
+                'error' => true,
+                'message' => 'image not found'
+            ];
+        }
+
     }
 }
