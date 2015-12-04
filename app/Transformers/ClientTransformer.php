@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeProject\Transformers;
+namespace PS\Transformers;
 
 use League\Fractal\TransformerAbstract;
 use PS\Entities\Client;

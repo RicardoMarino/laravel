@@ -2,13 +2,13 @@
 
 namespace PS\Presenters;
 
-use CodeProject\Transformers\ProjectTaskTransformer;
+use PS\Transformers\ProjectTaskTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
  * Class ProjectTaskPresenter
  *
- * @package namespace CodeProject\Presenters;
+ * @package namespace PS\Presenters;
  */
 class ProjectTaskPresenter extends FractalPresenter
 {
