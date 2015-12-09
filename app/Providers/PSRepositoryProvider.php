@@ -42,6 +42,18 @@ class PSRepositoryProvider extends ServiceProvider {
         $this->app->bind(
             \PS\Repositories\Contract\ProjectMemberRepository::class, \PS\Repositories\ProjectMemberRepositoryEloquent::class
         );
+        /*
+         * ProjectFiles
+         */
+        $this->app->bind(
+            \PS\Repositories\Contract\ProjectFileRepository::class, \PS\Repositories\ProjectFileRepositoryEloquent::class
+        );
+        /*
+         * OAuthClient
+         */
+        $this->app->bind(
+            \PS\Repositories\Contract\OAuthClientRepository::class, \PS\Repositories\OAuthClientRepositoryEloquent::class
+        );
     }
 
 }

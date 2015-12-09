@@ -4,7 +4,7 @@ namespace PS\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use PS\Repositories\OAuthClientRepository;
+use PS\Repositories\Contract\OAuthClientRepository;
 use PS\Entities\OAuthClient;
 
 /**
