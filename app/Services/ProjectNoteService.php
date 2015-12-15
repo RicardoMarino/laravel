@@ -33,11 +33,10 @@ class ProjectNoteService {
             $this->validator->with($data)->passesOrFail();
             return $this->repository->create($data);
         } catch (ValidatorException $ex) {
-            dd($ex->getMessageBag());
-            return response()->json([
-                    'error' => true,
-                    'message' => $ex->getMessageBag()
-                    ], 412);
+            return [
+                'error' => true,
+                'message' => $ex->getMessageBag()
+            ];
         }
     }
 

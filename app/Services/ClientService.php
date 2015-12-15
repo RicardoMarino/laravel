@@ -28,15 +28,16 @@ class ClientService {
     }
 
     public function create(array $data) {
-
         try {
             $this->validator->with($data)->passesOrFail();
             return $this->repository->create($data);
         } catch (ValidatorException $ex) {
-            return response()->json([
-                    'error' => true,
-                    'message' => $ex->getMessageBag()
-                    ], 412);
+            dd($ex);
+
+            return [
+                'error' => true,
+                'message' => $ex->getMessageBag()
+            ];
         }
     }
 

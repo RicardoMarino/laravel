@@ -83,6 +83,19 @@ gulp.task('copy-fonts', function () {
         .pipe(gulp.dest(config.build_path_css + '/fonts'))
         .pipe(liveReload());
 });
+
+
+config.build_path_html = config.build_path + '/views';
+
+gulp.task('copy-views', function () {
+    gulp.src([
+        config.assets_path + '/js/views/**/*.html'
+    ])
+        .pipe(gulp.dest(config.build_path_html))
+        .pipe(liveReload());
+});
+
+
 gulp.task('clear-build-folder',function(){
     clean.sync(config.build_path);
     clean.sync(config.build_path_fonts);
@@ -97,12 +110,12 @@ gulp.task('default', ['clear-build-folder'],function(){
 
         mix.version(['js/all.js','css/all.css']);
 
-        gulp.start('copy-fonts'/*,'copy-img','copy-views'*/);
+        gulp.start('copy-fonts','copy-views'/*,'copy-img','copy-views'*/);
     });
 });
 
 gulp.task('watch-dev', ['clear-build-folder'], function(){
     liveReload.listen();
-    gulp.start('copy-styles','copy-scripts',/*'copy-img','copy-views',*/'copy-fonts');
-    gulp.watch(config.assets_path + '/**',['copy-styles', 'copy-scripts',/*'copy-img','copy-views',*/'copy-fonts']);
+    gulp.start('copy-styles','copy-scripts',/*'copy-img',*/'copy-views','copy-fonts');
+    gulp.watch(config.assets_path + '/**',['copy-styles', 'copy-scripts',/*'copy-img',*/'copy-views','copy-fonts']);
 });

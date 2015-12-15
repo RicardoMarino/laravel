@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ptBR">
+<html lang="en" ng-app="app">
     <head>
         <meta charset="utf-8">
         <title> Gestor de Projetos </title>
@@ -69,10 +69,25 @@
                 <script src="{{'build/js/vendor/angular.min.js'}}"></script>
                 <script src="{{'build/js/vendor/angular-route.min.js'}}"></script>
                 <script src="{{'build/js/vendor/angular-resource.min.js'}}"></script>
-                <script src="{{'build/js/vendor/angular-cookies.min.js'}}"></script>
                 <script src="{{'build/js/vendor/angular-messages.min.js'}}"></script>
                 <script src="{{'build/js/vendor/ui-bootstrap.min.js'}}"></script>
                 <script src="{{'build/js/vendor/navbar.min.js'}}"></script>
+
+
+                <script src="{{ asset('build/js/vendor/angular-cookies.min.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/vendor/query-string.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/vendor/angular-oauth2.min.js') }}" type="text/javascript"></script>
+
+
+                <script src="{{ asset('build/js/app.js') }}" type="text/javascript"></script>
+
+                <!-- Controllers -->
+                <script src="{{ asset('build/js/controllers/home.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/controllers/login.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/controllers/client/clientList.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/controllers/client/clientNew.js') }}" type="text/javascript"></script>
+                <!-- Services -->
+                <script src="{{ asset('build/js/services/client.js') }}" type="text/javascript"></script>
             @else
                 <script src="{{elixir('js/all.js')}}"></script>
             @endif
