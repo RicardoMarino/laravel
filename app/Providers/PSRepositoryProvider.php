@@ -54,6 +54,12 @@ class PSRepositoryProvider extends ServiceProvider {
         $this->app->bind(
             \PS\Repositories\Contract\OAuthClientRepository::class, \PS\Repositories\OAuthClientRepositoryEloquent::class
         );
+        /*
+         * User
+         */
+        $this->app->bind(
+            \PS\Repositories\Contract\UserRepository::class, \PS\Repositories\UserRepositoryEloquent::class
+        );
     }
 
 }

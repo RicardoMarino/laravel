@@ -17,6 +17,7 @@ namespace PS\Services;
 use PS\Repositories\Contract\ProjectFileRepository;
 use PS\Repositories\Contract\ProjectMemberRepository;
 use PS\Repositories\Contract\ProjectRepository;
+use PS\Validators\ProjectFileValidator;
 use PS\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 
@@ -94,14 +95,12 @@ class ProjectService {
     }
 
     public function createFile(array $data){
-
         try{
 
             $this->validatorFile->with($data)->passesOrFail();
 
             $file = $data['file'];
             $data['extension'] = $file->getClientOriginalExtension();
-
             $project = $this->repository->skipPresenter()->find($data['project_id']);
 
             $projectFile = $project->files()->create($data);
@@ -109,7 +108,7 @@ class ProjectService {
             $this->storage->put($projectFile->id.".".$data['extension'], $this->file->get($data['file']));
 
             return  [
-                'success' => true,
+                'error' => false,
                 'message' => 'Image saved'
             ];
 

@@ -17,7 +17,7 @@ class ClientTransformer extends TransformerAbstract
 
             'id'            => $model->id,
             'name'          => $model->name,
-            'responsable'   => $model->responsable,
+            'responsible'   => $model->responsible,
             'email'         => $model->email,
             'phone'         => $model->phone,
             'address'       => $model->address,

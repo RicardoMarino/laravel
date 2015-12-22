@@ -14,6 +14,7 @@ namespace PS\Services;
  * @author Falgor
  */
 use PS\Repositories\Contract\ProjectNoteRepository;
+use PS\Validators\ProjectNoteValidator;
 use PS\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 
@@ -22,7 +23,7 @@ class ProjectNoteService {
     protected $repository;
     protected $validator;
 
-    public function __construct(ProjectNoteRepository $repository, ProjectValidator $validator) {
+    public function __construct(ProjectNoteRepository $repository, ProjectNoteValidator $validator) {
         $this->repository = $repository;
         $this->validator = $validator;
     }

@@ -44,14 +44,15 @@ class ProjectFileController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
         $file = $request->file('file');
         $data['file'] =$file;
         $data['extension'] = $file->getClientOriginalExtension();
         $data['name'] = $request->name;
         $data['description'] = $request->description;
-        $this->service->createFile($data);
+        $data['project_id'] =  $id;
+        return $this->service->createFile($data);
     }
 
     /**

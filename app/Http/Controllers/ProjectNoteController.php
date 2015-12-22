@@ -23,12 +23,7 @@ class ProjectNoteController extends Controller {
      * @return Response
      */
     public function index($id) {
-        $projectNote = $this->repository->findWhere(['project_id' => $id]);
-        return [
-            'error' => false,
-            'data' => $projectNote,
-            'message' => 'Foram encontradas ' . count($projectNote) . ' notas vinculadas ao projeto!'
-        ];
+        return $this->repository->findWhere(['project_id' => $id]);
     }
 
     /**
@@ -57,10 +52,7 @@ class ProjectNoteController extends Controller {
      * @return Response
      */
     public function show($id, $noteId) {
-        return $this->repository->findWhere([
-                'project_id' => $id,
-                'id' => $noteId
-        ]);
+        return $this->repository->find($noteId);
     }
 
     /**

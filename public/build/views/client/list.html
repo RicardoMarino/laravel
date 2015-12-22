@@ -19,11 +19,15 @@
                         <tbody>
                             <tr ng-repeat="o in clients">
                                 <td>{{ o.name }}</td>
-                                <td>{{ o.responsable }}</td>
+                                <td>{{ o.responsible }}</td>
                                 <td>{{ o.email }}</td>
                                 <td>{{ o.phone }}</td>
-                                <td><a ng-href="#/client/{{o.id}}/edit">Editar</td>
-                                <td><a ng-href="#/client/{{o.id}}/remove">Excluir</td>
+                                <td >
+                                    <div class="btn-group">
+                                    <a class="btn btn-info" ng-href="#/clients/{{o.id}}/edit">Editar</a>
+                                    <a class="btn btn-danger" ng-href="#/clients/{{o.id}}/remove">Excluir</a>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
