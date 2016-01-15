@@ -20,6 +20,10 @@ use PS\Repositories\Contract\ClientRepository;
 
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository{
 
+    protected $fieldSearchable = array(
+        'name',
+    );
+
     public function model() {
         return Client::class;
     }

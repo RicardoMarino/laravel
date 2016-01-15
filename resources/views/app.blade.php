@@ -73,7 +73,7 @@
                 <script src="{{'build/js/vendor/angular-route.min.js'}}"></script>
                 <script src="{{'build/js/vendor/angular-resource.min.js'}}"></script>
                 <script src="{{'build/js/vendor/angular-messages.min.js'}}"></script>
-                <script src="{{'build/js/vendor/ui-bootstrap.min.js'}}"></script>
+                <script src="{{'build/js/vendor/ui-bootstrap-tpls.min.js'}}"></script>
                 <script src="{{'build/js/vendor/navbar.min.js'}}"></script>
 
 
@@ -93,15 +93,24 @@
                 <script src="{{ asset('build/js/controllers/client/clientEdit.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('build/js/controllers/client/clientRemove.js') }}" type="text/javascript"></script>
 
+                <script src="{{ asset('build/js/controllers/project/projectList.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/controllers/project/projectRemove.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/controllers/project/projectEdit.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/controllers/project/projectNew.js') }}" type="text/javascript"></script>
+
+
                 <script src="{{ asset('build/js/controllers/project-note/projectNoteList.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('build/js/controllers/project-note/projectNoteRemove.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('build/js/controllers/project-note/projectNoteEdit.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('build/js/controllers/project-note/projectNoteNew.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('build/js/controllers/project-note/projectNoteShow.js') }}" type="text/javascript"></script>
 
+                <!-- Filters -->
+                <script src="{{ asset('build/js/filters/date-br.js') }}" type="text/javascript"></script>
 
                 <!-- Services -->
                 <script src="{{ asset('build/js/services/client.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('build/js/services/project.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('build/js/services/projectNote.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('build/js/services/user.js') }}" type="text/javascript"></script>
             @else

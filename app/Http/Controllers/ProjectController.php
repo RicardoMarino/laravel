@@ -24,16 +24,7 @@ class ProjectController extends Controller {
      */
     public function index() {
 
-        return $this->repository->findWhere(['owner_id' =>\Authorizer::getResourceOwnerId()])->all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create() {
-        
+        return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
     }
 
     /**
@@ -57,16 +48,6 @@ class ProjectController extends Controller {
             return ['error' =>'Access Forbidden'];
         }
         return $this->repository->find($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id) {
-        //
     }
 
     /**

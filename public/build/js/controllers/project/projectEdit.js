@@ -1,0 +1,34 @@
+angular.module('app.controllers')
+    .controller('ProjectEditController',
+    ['$scope','$location','$routeParams','$cookies','Project','Client','appConfig',
+    function($scope,$location,$routeParams,$cookies,Project,Client,appConfig){
+        Project.get({id:$routeParams.id},function(data){
+            $scope.project = data;
+            Client.get({id : data.client_id},function(data){
+                $scope.clientSelected = data;
+            });
+        });
+
+        $scope.status = appConfig.project.status;
+        $scope.save = function(){
+            if($scope.form.$valid){
+                $scope.project.owner_id = $cookies.getObject('user').id;
+                Project.update({id:$routeParams.id},$scope.project,function(){
+                    $location.path('/projects');
+                });
+            }
+        };
+        $scope.formatName = function(model){
+            if(model){
+                return model.name;
+            }
+            return '';
+        };
+
+        $scope.getClients = function(name){
+            return Client.get({
+                search: name,
+                searchFields: 'name:like'
+            }).$promise;
+        };
+    }]);

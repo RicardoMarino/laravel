@@ -23,7 +23,7 @@ class ProjectValidator extends LaravelValidator {
         'name' => 'required',
         'progress' => 'required',
         'status' => 'required',
-        'duo_date' => 'required'
+        'due_date' => 'required'
     ];
 
     protected $messages = [
