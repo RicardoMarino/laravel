@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title"> Listagem de Notas de Projeto
+                        <div class="pull-right">
+                            <a class="btn-sm btn btn-success" ng-href="#/project/{{o.project_id}}/notes/new">Novo</a>
+                        </div>
+                    </h3>
+
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Titulo</th>
+                                <th>Nota</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="o in projectNotes">
+                                <td>{{ o.id }}</td>
+                                <td >{{ o.title }}</td>
+                                <td style=" max-width: 450px; text-overflow: ellipsis" >{{ o.note }}</td>
+                                <td >
+                                    <div class="btn-group">
+                                    <a class="btn btn-info" ng-href="#/project/{{o.project_id}}/notes/{{o.id}}/edit">Editar</a>
+                                    <a class="btn btn-danger" ng-href="#/project/{{o.project_id}}/notes/{{o.id}}/remove">Excluir</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

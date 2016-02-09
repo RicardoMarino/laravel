@@ -21,13 +21,20 @@ use PS\Repositories\Contract\ClientRepository;
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository{
 
     protected $fieldSearchable = array(
-        'name',
+        'name'
     );
 
     public function model() {
         return Client::class;
     }
 
+    /**
+     * Boot up the repository, pushing criteria
+     */
+    public function boot()
+    {
+        $this->pushCriteria( app('Prettus\Repository\Criteria\RequestCriteria') );
+    }
     /**
      * @return mixed
     */

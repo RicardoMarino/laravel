@@ -20,7 +20,7 @@ angular.module('app.services')
                         var obj = appConfig.utils.transformResponse(data,headers);
                         if(angular.isObject(obj) && obj.hasOwnProperty('due_date')){
                             var dateArray = obj.due_date.split('-');
-                                mouth = dateArray[1] - 1;
+                            var mouth = dateArray[1] - 1;
                             obj.due_date = new Date(dateArray[0],mouth,dateArray[2]);
                         }
                         return obj;

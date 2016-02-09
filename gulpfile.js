@@ -23,7 +23,8 @@ config.vendor_path_js = [
  config.bower_path + '/angular-oauth2/dist/angular-oauth2.min.js',
  config.bower_path + '/query-string/query-string.js',
  config.bower_path + '/angular-bootstrap/ui-bootstrap-tpls.min.js',
- config.bower_path + '/angular-strap/dist/modules/navbar.min.js'
+ config.bower_path + '/angular-strap/dist/modules/navbar.min.js',
+ config.bower_path + '/ng-file-upload/ng-file-upload.min.js'
 ];
 
 //Css

@@ -24,13 +24,6 @@ class ProjectTaskRepositoryEloquent extends BaseRepository implements ProjectTas
         return ProjectTask::class;
     }
 
-    /**
-     * Boot up the repository, pushing criteria
-     */
-    public function boot()
-    {
-        $this->pushCriteria( app(RequestCriteria::class) );
-    }
 
     /**
      * @return mixed

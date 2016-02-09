@@ -75,7 +75,7 @@
                 <script src="{{'build/js/vendor/angular-messages.min.js'}}"></script>
                 <script src="{{'build/js/vendor/ui-bootstrap-tpls.min.js'}}"></script>
                 <script src="{{'build/js/vendor/navbar.min.js'}}"></script>
-
+                <script src="{{'build/js/vendor/ng-file-upload.min.js'}}"></script>
 
                 <script src="{{ asset('build/js/vendor/angular-cookies.min.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('build/js/vendor/query-string.js') }}" type="text/javascript"></script>

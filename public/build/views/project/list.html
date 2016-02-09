@@ -17,6 +17,7 @@
                                 <th>Código</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
+                                <th>Cliente</th>
                                 <th>Status</th>
                                 <th>Progresso</th>
                                 <th>Encerramento</th>
@@ -28,6 +29,7 @@
                                 <td>{{ o.id }}</td>
                                 <td>{{ o.name }}</td>
                                 <td>{{ o.description }}</td>
+                                <td>{{ o.client.data.name }}</td>
                                 <td>{{ o.status }}</td>
                                 <td>{{ o.progress }}</td>
                                 <td>{{ o.due_date | dateBr}}</td>

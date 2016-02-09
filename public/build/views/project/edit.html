@@ -33,19 +33,26 @@
                                 <input class="form-control" name="client_id" ng-model="clientSelected"
                                        typeahead="c as c.name for c in getClients($viewValue) |limitTo:5"
                                        typeahead-input-formatter="formatName($model)"
+                                       typeahead-on-select="selectClient($item)"
+                                       typeahead-editable="false"
                                        required/>
                                 <div ng-messages="form.client_id.$error" class="help-block" ng-show="!form.client_id.$valid && form.client_id.$touched">
                                     <div ng-message="required">Campo obrigatório</div>
+                                    <div ng-message="editable">Informe um cliente válido</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" ng-class="{'has-error':!form.due_date.$valid && form.due_date.$touched}">
                             <label class="col-md-4 control-label">Due date</label>
                             <div class="col-md-6">
-                                <input type="date" class="form-control" name="due_date" ng-model="project.due_date" required>
-                                <div ng-messages="form.due_date.$error" class="help-block" ng-show="!form.due_date.$valid && form.due_date.$touched">
-                                    <div ng-message="required">Campo obrigatório</div>
-                                </div>
+                                <p class="input-group">
+                                    <input type="text" name="due_date" class="form-control"  datepicker-popup="dd/MM/yyyy"
+                                           ng-model="project.due_date" is-open="due_date.status.opened"
+                                           close-text="Close"  required/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group" ng-class="{'has-error':!form.status.$valid && form.status.$touched}">
