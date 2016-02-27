@@ -1,5 +1,5 @@
 var app = angular.module('app',[
-    'ngRoute', 'angular-oauth2','app.controllers','app.services','app.filters',
+    'ngRoute', 'angular-oauth2','app.controllers','app.services','app.directives','app.filters',
     'ui.bootstrap.typeahead','ui.bootstrap.datepicker','ui.bootstrap.tpls',
     'ngFileUpload'
 ]);
@@ -7,7 +7,7 @@ var app = angular.module('app',[
 angular.module('app.controllers',['ngMessages','angular-oauth2']);
 angular.module('app.filters',[]);
 angular.module('app.services',['ngResource']);
-
+angular.module('app.directives',[]);
 app.provider('appConfig',['$httpParamSerializerProvider',function($httpParamSerializerProvider){
     var config = {
         baseUrl: 'http://localhost:8000',
@@ -18,6 +18,9 @@ app.provider('appConfig',['$httpParamSerializerProvider',function($httpParamSeri
                 {value:'2',label:'Em andamento'},
                 {value:'3',label:'Finalizado'}
             ]
+        },
+        urls:{
+            projectFile:'/project/{{id}}/file/{{idFile}}'
         },
         utils:{
             transformRequest: function(data){
@@ -120,7 +123,7 @@ app.config([
             })
             .when('/project/:id/files',{
                 controller:'ProjectFileListController',
-                templateUrl:'build/views/project-note/list.html'
+                templateUrl:'build/views/project-file/list.html'
             })
             .when('/project/:id/files/:idFile/show',{
                 controller:'ProjectFileShowController',

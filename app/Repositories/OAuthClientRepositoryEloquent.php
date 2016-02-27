@@ -28,6 +28,6 @@ class OAuthClientRepositoryEloquent extends BaseRepository implements OAuthClien
      */
     public function boot()
     {
-        $this->pushCriteria( app(RequestCriteria::class) );
+        $this->pushCriteria(  app('Prettus\Repository\Criteria\RequestCriteria')  );
     }
 }

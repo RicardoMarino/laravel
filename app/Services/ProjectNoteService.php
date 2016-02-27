@@ -15,7 +15,6 @@ namespace PS\Services;
  */
 use PS\Repositories\Contract\ProjectNoteRepository;
 use PS\Validators\ProjectNoteValidator;
-use PS\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 
 class ProjectNoteService {

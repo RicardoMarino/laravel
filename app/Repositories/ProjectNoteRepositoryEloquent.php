@@ -28,7 +28,7 @@ class ProjectNoteRepositoryEloquent extends BaseRepository implements ProjectNot
      */
     public function boot()
     {
-        $this->pushCriteria( app(RequestCriteria::class) );
+        $this->pushCriteria(  app('Prettus\Repository\Criteria\RequestCriteria')  );
     }
 
     /**

@@ -29,7 +29,7 @@ class ProjectFileRepositoryEloquent extends BaseRepository implements ProjectFil
      */
     public function boot()
     {
-        $this->pushCriteria( app(RequestCriteria::class) );
+        $this->pushCriteria(  app('Prettus\Repository\Criteria\RequestCriteria'));
     }
 
     public function  presenter(){

@@ -94,60 +94,19 @@ class ProjectService {
         return false;
     }
 
-    public function createFile(array $data){
-        try{
-
-            $this->validatorFile->with($data)->passesOrFail();
-
-            $file = $data['file'];
-            $data['extension'] = $file->getClientOriginalExtension();
-            $project = $this->repository->skipPresenter()->find($data['project_id']);
-
-            $projectFile = $project->files()->create($data);
-
-            $this->storage->put($projectFile->id.".".$data['extension'], $this->file->get($data['file']));
-
-            return  [
-                'error' => false,
-                'message' => 'Image saved'
-            ];
-
-        }catch (ValidatorException $e){
-            return [
-                'error' => true,
-                'message' => $e->getMessageBag()
-            ];
-        }
+    private function checkProjectOwner($project_id){
+        $userId = \Authorizer::getResourceOwnerId();
+        return $this->repository->isOwner($project_id,$userId);
+    }
+    private function checkProjectMember($project_id){
+        $userId = \Authorizer::getResourceOwnerId();
+        return $this->repository->hasMember($project_id,$userId);
     }
 
-    public function destroyImage($id)
-    {
-        try {
-
-            $image = $this->repositoryFile->skipPresenter()->find($id);
-            if (count($image)) {
-
-                if ($this->storage->exists($image->id . '.' . $image->extension)) {
-                    $this->storage->delete($image->id . '.' . $image->extension);
-                } else {
-                    return [
-                        'error' => true,
-                        'message' => 'file does not exist'
-                    ];
-                }
-                $image->delete();
-                return [
-                    'success' => true,
-                    'message' => 'image deleted'
-                ];
-            }
-        }catch(ModelNotFoundException $e)
-        {
-            return [
-                'error' => true,
-                'message' => 'image not found'
-            ];
+    public function checkProjectPermissions($project_id){
+        if($this->checkProjectOwner($project_id) || $this->checkProjectMember($project_id)){
+            return true;
         }
-
+        return false;
     }
 }
